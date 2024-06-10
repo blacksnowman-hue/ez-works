@@ -1,0 +1,61 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  flex: 1;
+}
+
+.services {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.service-card {
+  width: 200px;
+  padding: 15px;
+  border: 1px solid #3CC3F2;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #003366; /* Dark background color */
+  color: white; /* Text color white */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #3CC3F2; /* Title color */
+}
+
+.service-card p {
+  font-size: 0.9em;
+  color: white; /* Text color white */
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px; /* Ensure the icons have a uniform size */
+  margin-bottom: 10px;
+}
+
+.form {
+  margin-top: 20px;
+}

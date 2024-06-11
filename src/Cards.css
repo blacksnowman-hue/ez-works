@@ -1,0 +1,30 @@
+.cardWrapper{
+    width: 200px;
+    height: 170px;
+    background-color: #112949;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: content-box;
+}
+.cardHead{
+    font-size: large;
+    font-weight: 250;
+    display: flex;
+    gap: 10px;
+    color: #3CC3F2;
+    p{
+        margin-top: 2px;
+        text-align: start;
+
+    }
+}
+.cardText{
+    margin-top: 20px;
+    color: white;
+}
+
+.icon {
+    width: 40px;
+    height: 40px; /* Ensure the icons have a uniform size */
+    margin-bottom: 10px;
+}

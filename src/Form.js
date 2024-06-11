@@ -1,70 +1,60 @@
 import React, { useState } from 'react';
-import './Form.css';
-import './Header.css';
+import axios from 'axios';
+import "./Form.css";
 
-
-
-const Form = () => {
+const Email = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
+    const [msg, setMsg] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
-
-
-        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!emailPattern.test(email)) {
-            setError('Please enter a valid email address.');
-            return;
-        }
-
-        setError('');
-        setMessage('');
+        const data = { email: email };
 
         try {
-            const response = await fetch('http://34.225.132.160:8002/api', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-
-            if (response.status === 422) {
-                setError('Invalid Input');
-            } else if (response.status === 200) {
-                setMessage('Form Submitted');
-            } else {
-                setError('An unexpected error occurred.');
-            }
+            const res = await axios.post("http://34.225.132.160:8002/api", data);
+            console.log(res);
+            setError('');
+            setMsg("Form Submitted"); 
         } catch (err) {
-            setError('An unexpected error occurred.');
+            console.error(err);
+            if (err.response && err.response.status === 422) {
+                setError('Invalid Email addresses');
+                setMsg("");
+            } else {
+                setError('An error occurred. Please try again.');
+                setMsg("");
+            }
+        }
+    };
+
+    const handleEmailChange = (e) => {
+        const value = e.target.value;
+        setEmail(value);
+        if (value.endsWith('@ez.works')) {
+            setError('Invalid Email Address');
+        } else {
+            setError('');
         }
     };
 
     return (
-
-        
-        <form className="form" onSubmit={handleSubmit}>
-
-
-            
+        <form onSubmit={handleClick}>
             <input
-                type="email"
-                placeholder="Email Address"
+                id="email"
+                className="emailid"
+                type='email'
+                placeholder='Email Address'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange}
                 required
             />
-              <button type="submit">Contact Me</button>
+            <button type='submit' className='btn'>Contact me</button>
             {error && <div className="error">{error}</div>}
-            {message && <div className="message">{message}</div>}
-          
+            {msg && <div className="msg">{msg}</div>}
+            
         </form>
-
-        
     );
 };
 
-export default Form;
+export default Email;

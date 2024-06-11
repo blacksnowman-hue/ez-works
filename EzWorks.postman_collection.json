@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "87b3e23f-cb99-4d05-b641-a14b28c19929",
+		"name": "EzWorks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32049022"
+	},
+	"item": [
+		{
+			"name": "http://34.225.132.160:8002/api",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"test@example.com\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.225.132.160:8002/api",
+					"protocol": "http",
+					"host": [
+						"34",
+						"225",
+						"132",
+						"160"
+					],
+					"port": "8002",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
